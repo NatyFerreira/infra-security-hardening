@@ -28,29 +28,7 @@ infra-security-hardening/
 ```
 
 ```
-                 ┌──────────────────────┐
-                 │  External operator    │
-                 │  SSH :22, key only     │
-                 └──────────┬───────────┘
-                            │
-        ┌───────────────────┼────────────────────┐
-        ▼                   ▼                    ▼
-┌───────────────┐   ┌───────────────┐   ┌───────────────────┐
-│    App VM      │   │  Zabbix VM     │   │   Storage VM        │
-│  Carburoam      │──▶│  Zabbix server │   │  SeaweedFS (S3 API) │
-│  Agent + SNMP   │   │  PostgreSQL    │   │  Backup bucket      │
-│  UFW            │   │  Apache + PHP  │   │                     │
-└───────────────┘   └──────┬────────┘   └─────────▲──────────┘
-                            │                        │
-                            ▼                        │
-                    ┌───────────────┐                │
-                    │   Discord      │                │
-                    │  alert channel │                │
-                    └───────────────┘                │
-                    (daily backup) ────────────────────┘
-```
-
-See [`carburoam_security_architecture.svg`](./carburoam_security_architecture.svg) for the full annotated diagram.
+`carburoam_security_architecture.svg`](./carburoam_security_architecture.svg) for the full annotated diagram.
 
 ---
 
