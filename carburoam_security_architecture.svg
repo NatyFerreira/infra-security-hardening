@@ -1,0 +1,74 @@
+<svg width="680" height="460" viewBox="0 0 680 460" xmlns="http://www.w3.org/2000/svg">
+<title>Carburoam security architecture</title>
+<desc>Three VMs (application, Zabbix, S3 storage), with an external operator over SSH, a daily backup flow to S3, monitoring polling between VMs, and alerts sent to Discord.</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="#444" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+
+<rect width="680" height="460" fill="#ffffff"/>
+
+<!-- Operator -->
+<rect x="40" y="20" width="140" height="40" rx="8" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+<text x="110" y="36" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#222">External operator</text>
+<text x="110" y="52" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">SSH :22, key only</text>
+<line x1="90" y1="60" x2="90" y2="110" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Backup flow line -->
+<line x1="170" y1="95" x2="550" y2="95" stroke="#888" stroke-width="1" opacity="0.6"/>
+<line x1="170" y1="95" x2="170" y2="110" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+<line x1="550" y1="95" x2="550" y2="110" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+<text x="360" y="86" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">Daily backup (S3 PUT)</text>
+
+<!-- App VM -->
+<rect x="40" y="110" width="180" height="230" rx="16" fill="#eaf2fb" stroke="#7ba7d9" stroke-width="1"/>
+<text x="130" y="128" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#1a3a5c">App VM</text>
+<text x="130" y="144" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">&lt;APP-VM-IP&gt;</text>
+
+<rect x="55" y="165" width="150" height="40" rx="8" fill="#d9f0ec" stroke="#5ba894" stroke-width="1"/>
+<text x="130" y="180" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1a4a3e">Carburoam</text>
+<text x="130" y="196" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#444">Docker container :8501</text>
+
+<rect x="55" y="215" width="150" height="40" rx="8" fill="#d9f0ec" stroke="#5ba894" stroke-width="1"/>
+<text x="130" y="239" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#1a4a3e">Agent + SNMP</text>
+
+<rect x="55" y="265" width="150" height="40" rx="8" fill="#e2f4d9" stroke="#7fae55" stroke-width="1"/>
+<text x="130" y="280" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#3a5a1f">UFW</text>
+<text x="130" y="296" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#444">22, 10050, 161</text>
+
+<line x1="220" y1="225" x2="250" y2="225" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<!-- Zabbix VM -->
+<rect x="250" y="110" width="180" height="230" rx="16" fill="#f2eafb" stroke="#a97bd9" stroke-width="1"/>
+<text x="340" y="128" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#3a1a5c">Zabbix VM</text>
+<text x="340" y="144" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">&lt;ZABBIX-VM-IP&gt;</text>
+
+<rect x="265" y="165" width="150" height="40" rx="8" fill="#fbe3e3" stroke="#c97b7b" stroke-width="1"/>
+<text x="340" y="189" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#5c1a1a">Zabbix server</text>
+
+<rect x="265" y="215" width="150" height="40" rx="8" fill="#fbe3e3" stroke="#c97b7b" stroke-width="1"/>
+<text x="340" y="239" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#5c1a1a">PostgreSQL</text>
+
+<rect x="265" y="265" width="150" height="40" rx="8" fill="#fbe3e3" stroke="#c97b7b" stroke-width="1"/>
+<text x="340" y="289" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#5c1a1a">Apache + PHP</text>
+
+<line x1="340" y1="340" x2="340" y2="380" stroke="#444" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+<rect x="250" y="380" width="180" height="40" rx="8" fill="#f2f2f2" stroke="#999" stroke-width="1"/>
+<text x="340" y="396" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#222">Discord</text>
+<text x="340" y="412" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">alert channel</text>
+
+<!-- S3 storage VM -->
+<rect x="460" y="110" width="180" height="230" rx="16" fill="#fbeaf2" stroke="#d97ba9" stroke-width="1"/>
+<text x="550" y="128" text-anchor="middle" font-family="sans-serif" font-size="13" font-weight="bold" fill="#5c1a3a">Storage VM</text>
+<text x="550" y="144" text-anchor="middle" font-family="sans-serif" font-size="10" fill="#555">&lt;STORAGE-VM-IP&gt;</text>
+
+<rect x="475" y="165" width="150" height="40" rx="8" fill="#fbf0d9" stroke="#c9a55b" stroke-width="1"/>
+<text x="550" y="180" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#5c4a1a">SeaweedFS</text>
+<text x="550" y="196" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#444">S3 API :8333</text>
+
+<rect x="475" y="215" width="150" height="40" rx="8" fill="#fbf0d9" stroke="#c9a55b" stroke-width="1"/>
+<text x="550" y="239" text-anchor="middle" font-family="sans-serif" font-size="11" font-weight="bold" fill="#5c4a1a">carburoam-backups</text>
+
+</svg>
