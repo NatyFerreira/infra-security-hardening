@@ -27,8 +27,9 @@ infra-security-hardening/
 └── README.md
 ```
 
-```
-`carburoam_security_architecture.svg`](./carburoam_security_architecture.svg) for the full annotated diagram.
+![Architecture diagram](./carburoam_security_architecture.svg)
+
+*Three isolated VMs (application, monitoring, storage), external SSH access restricted to key-only auth, daily automated backups to S3-compatible storage, and alerting routed to Discord. Full analysis in [`Cloud_Security_Architecture_Analysis.md`](./Cloud_Security_Architecture_Analysis.md).*
 
 ---
 
